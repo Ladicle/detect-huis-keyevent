@@ -1,0 +1,3 @@
+package: github.com/Ladicle/detect-huis-keyevent
+import:
+- package: github.com/gvalkov/golang-evdev

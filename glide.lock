@@ -1,0 +1,6 @@
+hash: 4b4344da882faf399e81287ad357f437e356f7d1c4dc8843eb50021723473865
+updated: 2017-01-15T02:33:22.376219466+09:00
+imports:
+- name: github.com/gvalkov/golang-evdev
+  version: 87c03aa1a370124ec5a5fac733a629e0f9acd9a6
+testImports: []
