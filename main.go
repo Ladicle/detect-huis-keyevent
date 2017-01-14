@@ -5,7 +5,11 @@ import (
 	"os"
 
 	"github.com/gvalkov/golang-evdev"
+	"net/http"
+	"net/url"
 )
+
+const eventURL = "http://10.0.1.100:1880/huis"
 
 func main() {
 	if len(os.Args) <= 1 {
@@ -32,8 +36,18 @@ func main() {
 				continue
 			}
 			fmt.Println(str)
+			if err := sendKey(str); err != nil {
+				fmt.Printf("Can not send key: %v\n", err)
+			}
 		}
 	}
+}
+
+func sendKey(key string) error {
+	values := url.Values{}
+	values.Add("key", key)
+	_, err := http.PostForm(eventURL, values)
+	return err
 }
 
 func detectDownKeyEvent(ev *evdev.InputEvent) (string, error) {
