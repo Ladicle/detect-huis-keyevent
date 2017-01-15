@@ -1,0 +1,14 @@
+[Unit]
+Description="HUIS key-event detector"
+After=syslog.target network.target
+
+[Service]
+Environment="DEVICE=/dev/input/event11"
+ExecStart=/usr/local/bin/detect-huis-keyevent $DEVICE
+User=root
+Group=root
+Nice=10
+SyslogIdentifier=HUIS
+StandardOutput=syslog
+Restart=on-failure
+KillSignal=SIGINT
